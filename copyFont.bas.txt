@@ -1,0 +1,8 @@
+#autoline 10
+DEFPROC copyFont()
+  ; copy the font to 64000 - ld bc,0300H: ld hl,3D00H: ld de,FA00H: ldir: ret
+  %b=63744
+  POKE %b,1,0,3,33,0,61,17,0,%(b >> 8)+1,237,176,201
+  RANDOMIZE % USR b
+  DPOKE 23606,%b
+ENDPROC

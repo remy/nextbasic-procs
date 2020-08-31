@@ -1,0 +1,27 @@
+#autoline 10
+
+# this logic is based on the Fisher-Yates/Knuth shuffle and partly based on
+# http://rosettacode.org/wiki/Knuth_shuffle#Sinclair_ZX81_BASIC but IIRC I made
+# modifications to optimise and ensure I got the points I needed. I'd try to
+# explain it, but it's easier all round if you familiarise yourself with the
+# shuffle - it's very useful!
+
+; pick K random numbers up to N and store in %R()
+DEFPROC pickRandom(%k)
+  LOCAL %i: LOCAL %j: LOCAL %n
+  %n=20: ; select from 0-20 (excluding 20)
+  %i=0
+  ; init the 0-N array
+  REPEAT
+    %A(i)=%i
+    %i=%i+1
+  REPEAT UNTIL %i=n
+  ; then go back downwards for P values
+  REPEAT
+    %j=% RND i
+    %R(n-i)=%A(j): ; R is our global (winning positions)
+    %i=%i-1
+    %A(j)=%A(i)
+  REPEAT UNTIL %i=(n-k)
+  ; pickings are in global array R (for result)
+ENDPROC

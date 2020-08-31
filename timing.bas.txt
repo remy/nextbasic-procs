@@ -1,0 +1,12 @@
+#autoline 10
+
+# this is a routine to check the running speed of routines, I'd enable it on
+# demand to try to debug particular actions.
+
+; usage: PROC timing() TO %f: PRINT AT 0,0;%f;" ": ; f big = bad, small = good
+DEFPROC timing()
+  LET %g=% PEEK 23672
+  LET %f=%g-n
+  IF %g < n THEN LET %f=%f+256
+  LET %n=%g
+ENDPROC =%f

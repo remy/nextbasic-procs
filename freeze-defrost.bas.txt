@@ -1,0 +1,16 @@
+#autoline 10
+
+# to allow for a more seamless transition from screen to screen, I'll call this
+# routine which puts the shadow layer in front and all further printing, tiles
+# etc, will be hidden (in banks 9-11) and when I'm ready, I'll call defrost
+# which throws away the shadow layer bringing all the new visuals into view.
+
+
+DEFPROC freeze()
+  ; point Layer 2 to the shadow layer
+  LAYER BANK 12,9
+ENDPROC
+;
+DEFPROC defrost()
+  LAYER BANK 9,9
+ENDPROC

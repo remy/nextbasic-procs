@@ -1,0 +1,22 @@
+#autoline 10
+DEFPROC keyControl()
+  JUMP=% IN $7FFE&1=0
+  %i=% IN $dffe
+  RIGHT=%i&1=0
+  LEFT=%i&2=0
+ENDPROC
+
+# returns joystick AND keyboard state in a compatible format (that of the joystick)
+DEFPROC keyAndJoystick()
+
+  %j= IN 31: ; check the joystick and then keys
+
+  ; NOTE: these shifts aren't always needed, but it makes the code consistent
+  IF % IN $fbfe&1 THEN : ELSE %j=%j+@1000: ; Q
+  IF % IN $fdfe&1 THEN : ELSE %j=%j+@0100: ; A
+
+  %i=% IN $dffe
+  IF %i&2 THEN : ELSE %j=%j+@0010: ; O
+  IF %i&1 THEN : ELSE %j=%j+@0001: ; P
+
+ENDPROC =%j

@@ -1,0 +1,5 @@
+#autoline 10
+
+DEFPROC disableCaps()
+  POKE 23658,0: ; turn off CAPS LOCK (for menu items)
+ENDPROC

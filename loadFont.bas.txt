@@ -1,0 +1,8 @@
+#autoline 10
+
+DEFPROC loadFont()
+  LOAD "font.bin" CODE 64000
+  DPOKE 23606,63744: ; 64000-256 (256 = 8 * 32 control chars)
+  LAYER 2,1
+  PRINT CHR$ 2: ; trigger the font to be loaded on layer 2
+ENDPROC
