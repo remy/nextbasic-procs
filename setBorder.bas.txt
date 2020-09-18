@@ -5,10 +5,9 @@ DEFPROC setBorder(%n)
 # this routine allows me to change the border of the screen to any of the 512
 # colours that are available to the spectrum next. Without it, I'd only have 7
 # colours which would be sad!
-  LAYER 1,0: PALETTE DIM 9
-  BANK 28 DPOKE %(512+32),%((n&1) << 8)+(n >> 1): ; poke 16bit little endian next colour
+  LAYER 1,0
+  LAYER PALETTE 0,16,%n
   BORDER 0
-  LAYER PALETTE 0 BANK 28,512
   LAYER 2,1: ; re-select our original layer
   PAPER 0: INK 2: ; note that ink 2 is changed on the fly
 ENDPROC
