@@ -5,7 +5,7 @@ DEFPROC loadAssets()
 
   ; shadow L2 ends at 14, so we start at 15
   LOAD "assets/game.pal" BANK 15
-  SPRITE PALETTE 0 BANK 15
+  SPRITE PALETTE 0 BANK 15, 0
 
   LOAD "assets/sprites.spr" BANK 16
   SPRITE BANK 16
