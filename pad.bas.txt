@@ -1,0 +1,7 @@
+#autoline 10
+
+DEFPROC pad(%w)
+  IF %w < 10 THEN ENDPROC ="000"
+  IF %w < 100 THEN ENDPROC ="00"
+  IF %w < 1000 THEN ENDPROC ="0"
+ENDPROC =""
