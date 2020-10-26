@@ -5,3 +5,8 @@ DEFPROC pad(%w)
   IF %w < 100 THEN ENDPROC ="00"
   IF %w < 1000 THEN ENDPROC ="0"
 ENDPROC =""
+
+; usage
+%w=345
+PROC pad(%w) TO w$
+PRINT AT 0,0;"Score ";w$;%w
