@@ -1,0 +1,16 @@
+#autoline 10
+
+; param {int} %i
+; returns {string} hex string
+; uses: %j, h$, r$, p
+DEFPROC toHex(%i)
+  %j=4: ; symbols (2 bytes = 4 symbols)
+  h$="0123456789ABCDEF"
+  r$=""
+  REPEAT : WHILE %j <> 0
+    %j=%j-1
+    p=%(i&$f)+1
+    r$=h$(p)+r$
+    %i=%i >> 4
+  REPEAT UNTIL 0
+ENDPROC =r$
